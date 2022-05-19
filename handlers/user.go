@@ -56,6 +56,7 @@ func (u *userHandlerImpl) ReadUser(w http.ResponseWriter, r *http.Request) {
 	bytes, err := json.Marshal(userData)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 	_, _ = w.Write(bytes)
 	w.WriteHeader(http.StatusOK)
