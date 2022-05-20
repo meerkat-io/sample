@@ -1,7 +1,7 @@
 package dtos
 
 type UserData struct {
-	Id        string `json:"id" valid:"required"`
+	UserId    string `json:"user_id" valid:"required"`
 	FirstName string `json:"first_name" valid:"required"`
 	LastName  string `json:"last_name" valid:"required"`
 	Nickname  string `json:"nickname" valid:"required"`

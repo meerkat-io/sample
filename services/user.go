@@ -27,7 +27,7 @@ func NewUserService(repo repositories.UserRepo) UserService {
 
 func (u *userService) CreateUser(ctx context.Context, user *dtos.UserData) error {
 	return u.repo.Create(ctx, &entities.User{
-		UserId:    user.Id,
+		UserId:    user.UserId,
 		FirstName: user.FirstName,
 		LastName:  user.LastName,
 		Nickname:  user.Nickname,
@@ -43,7 +43,7 @@ func (u *userService) ReadUser(ctx context.Context, userId string) (*dtos.UserDa
 		return nil, err
 	}
 	return &dtos.UserData{
-		Id:        user.UserId,
+		UserId:    user.UserId,
 		FirstName: user.FirstName,
 		LastName:  user.LastName,
 		Nickname:  user.Nickname,
@@ -55,7 +55,7 @@ func (u *userService) ReadUser(ctx context.Context, userId string) (*dtos.UserDa
 
 func (u *userService) UpdateUser(ctx context.Context, user *dtos.UserData) error {
 	return u.repo.Update(ctx, &entities.User{
-		UserId:    user.Id,
+		UserId:    user.UserId,
 		FirstName: user.FirstName,
 		LastName:  user.LastName,
 		Nickname:  user.Nickname,
