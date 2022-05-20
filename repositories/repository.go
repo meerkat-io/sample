@@ -44,9 +44,7 @@ func (r *repositoryImpl) UserRepo() UserRepo {
 }
 
 func (r *repositoryImpl) init() {
-	r.user = &userRepoImpl{
-		collection: r.db.Collection(userCollectionName),
-	}
+	r.user = NewUserRepo(r.db.Collection(userCollectionName))
 }
 
 func (r *repositoryImpl) configure() error {

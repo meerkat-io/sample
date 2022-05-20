@@ -2,6 +2,7 @@ package repositories
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"sample/entities"
@@ -22,7 +23,16 @@ type userRepoImpl struct {
 	collection *mongo.Collection
 }
 
+func NewUserRepo(collection *mongo.Collection) UserRepo {
+	return &userRepoImpl{
+		collection: collection,
+	}
+}
+
 func (u *userRepoImpl) Create(ctx context.Context, user *entities.User) error {
+	if user.UserId == "" {
+		return fmt.Errorf("empty user id")
+	}
 	if user.Id.IsZero() {
 		user.Id = primitive.NewObjectID()
 	}
