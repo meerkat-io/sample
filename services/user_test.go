@@ -1,7 +1,6 @@
 package services_test
 
 import (
-	"context"
 	"sample/dtos"
 	"sample/repositories"
 	"sample/services"
@@ -12,13 +11,13 @@ import (
 )
 
 func TestSomething(t *testing.T) {
-	ctx := context.Background()
+	//ctx := context.Background()
 	ctl := gomock.NewController(t)
 	userRepo := repositories.NewMockUserRepo(ctl)
-	userRepo.EXPECT().Create(gomock.Any(), gomock.Any()).Return(nil)
+	userRepo.EXPECT().Create(gomock.Nil(), gomock.Any()).Return(nil)
 
 	userService := services.NewUserService(userRepo)
-	err := userService.CreateUser(ctx, &dtos.UserData{
+	err := userService.CreateUser(nil, &dtos.UserData{
 		UserId: "test_user_0",
 	})
 	assert.Nil(t, err)

@@ -5,11 +5,12 @@ import (
 	"os/signal"
 	"syscall"
 
-	"sample/infrastructures/logger"
 	"sample/repositories"
 	"sample/server/rest"
+	"sample/utils/logger"
 )
 
+//TO-DO add env lib
 func main() {
 	_ = logger.SetLevel(logger.DEBUG)
 
